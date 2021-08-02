@@ -1,3 +1,4 @@
 # Chat App using fire base
-- phase 1: Using Firebase
-- phase 2: Using Socket 
+- branch master: Using Firebase
+- branch using_socket: Using Socket 
+
