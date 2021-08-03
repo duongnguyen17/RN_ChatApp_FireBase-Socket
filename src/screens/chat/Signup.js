@@ -37,7 +37,7 @@ const Signup = ({navigation}) => {
   return (
     <SafeAreaView style={{alignItems: 'center', flex: 1}}>
       <View style={{width: '90%'}}>
-        <TextInput label="Email" value={email} onChangeText={setEmail} />
+        <TextInput label="Phone number" value={email} onChangeText={setEmail} />
         <TextInput
           style={{marginTop: 10}}
           secureTextEntry={entry}

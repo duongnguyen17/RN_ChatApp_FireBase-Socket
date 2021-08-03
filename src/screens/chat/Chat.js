@@ -1,9 +1,10 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useState, useEffect, useCallback, useContext} from 'react';
 import {SafeAreaView, Text} from 'react-native';
 import {GiftedChat} from 'react-native-gifted-chat';
 import {Button, TextInput} from 'react-native-paper';
 // import {logOut, updateUsername} from '../../firebase';
 import io from 'socket.io-client';
+import {UserContext} from '../../../App';
 import {urlServer} from '../../constants';
 // import firestore from '@react-native-firebase/firestore';
 const Chat = ({route}) => {
@@ -12,6 +13,8 @@ const Chat = ({route}) => {
   const [username, setUsername] = useState('');
   const [messages, setMessages] = useState([]);
   const socket = io(urlServer);
+  const context = useContext(UserContext);
+
   useEffect(() => {
     socket.on('chat message', msg => {
       setMessages([...messages, msg]);
@@ -69,7 +72,7 @@ const Chat = ({route}) => {
       onSend={messages => {
         onSend(messages);
       }}
-      user={{_id: currUser.uid}}
+      user={{_id: context.state.user._id}}
     />
   );
 };
