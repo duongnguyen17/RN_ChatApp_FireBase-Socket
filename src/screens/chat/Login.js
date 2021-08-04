@@ -18,6 +18,7 @@ const Login = ({navigation}) => {
     // signInWithEmailAndPassword(email, password);
     try {
       const user = await login(email, password);
+      // console.log(`user`, user);
       context.dispatch({type: 'login', payload: user});
     } catch (error) {
       console.log(error.message);

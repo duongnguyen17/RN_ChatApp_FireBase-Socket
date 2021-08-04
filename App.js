@@ -16,6 +16,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Login from './src/screens/chat/Login';
 import Signup from './src/screens/chat/Signup';
 import Chat from './src/screens/chat/Chat';
+import ListRooms from './src/screens/chat/ListRooms';
 export const defaultState = {
   user: null,
   token: null,
@@ -39,14 +40,13 @@ const AuthChatNav = () => {
     </Stack.Navigator>
   );
 };
-const MainChatNav = ({currUser}) => {
+const MainChatNav = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="List Rooms">
+      <Stack.Screen component={ListRooms} name="List Rooms" />
       <Stack.Screen
         component={Chat}
         name="Chat"
-        options={{headerShown: false}}
-        initialParams={{currUser}}
       />
     </Stack.Navigator>
   );
@@ -61,7 +61,7 @@ const ChatApp = () => {
   //   });
   //   return subcriber;
   // }, []);
-  console.log(`state_ChatApp`, context.state);
+  // console.log(`state_ChatApp`, context.state);
   if (context.state?.user) {
     return <MainChatNav />;
   }
